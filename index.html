@@ -183,6 +183,12 @@ h1 .line { display: block; white-space: nowrap; }
 .pill.blue { background: var(--pill-blue); }
 .pill.yellow { background: var(--pill-yellow); }
 .pill.pink { background: var(--pill-pink); font-style: italic; padding-inline: 34px; }  /* even on both sides so the text stays centred; the eyes sit on the edge */
+/* pink pill always spans the combined width of the blue + yellow row.
+   width:0 + min-width:100% fills the container without widening it, so .pills shrink-wraps to the row. */
+@media (min-width: 521px) {
+  .pills { width: fit-content; }
+  .pill.pink { width: 0; min-width: 100%; box-sizing: border-box; }
+}
 .pill .peek {
   position: absolute;
   right: 0; top: 50%;
